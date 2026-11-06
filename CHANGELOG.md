@@ -9,4 +9,5 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Add `Tracer` (decorator and span), redacting bounded serialization, `MemorySink`, `JsonlSink`, `read_trace` and escaped Mermaid sequence diagrams via `to_mermaid`.
 - Initial project structure from the factory utility template.
