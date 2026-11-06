@@ -1,21 +1,25 @@
-"""Trace every tool call of an agent with redacted arguments, results, timing, cost and errors to JSONL, and render runs as escaped Mermaid sequence diagrams"""
+"""Trace every tool call of an agent with redacted JSONL and escaped Mermaid diagrams."""
 
 from __future__ import annotations
 
-__all__ = ["__version__", "normalize"]
+from .errors import TracerError
+from .mermaid import to_mermaid
+from .model import TraceEvent
+from .serialize import DEFAULT_REDACT_KEYS
+from .sinks import JsonlSink, MemorySink, read_trace
+from .tracer import SpanHandle, Tracer
+
+__all__ = [
+    "DEFAULT_REDACT_KEYS",
+    "JsonlSink",
+    "MemorySink",
+    "SpanHandle",
+    "TraceEvent",
+    "Tracer",
+    "TracerError",
+    "__version__",
+    "read_trace",
+    "to_mermaid",
+]
 
 __version__ = "0.1.0"
-
-
-def normalize(value: str) -> str:
-    """Return ``value`` trimmed and lower-cased.
-
-    Placeholder API created by the template: replace it with the utility's real behavior.
-
-    Raises:
-        ValueError: if ``value`` is empty or only whitespace.
-    """
-    cleaned = value.strip()
-    if not cleaned:
-        raise ValueError("value must not be empty")
-    return cleaned.lower()
